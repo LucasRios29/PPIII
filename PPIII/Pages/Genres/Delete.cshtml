@@ -1,0 +1,13 @@
+@page "{id:int}"
+@model PPIII.Pages.Genres.DeleteModel
+
+<h1>Eliminar Género</h1>
+
+<div>
+    <h4>¿Eliminar este género?</h4>
+    <div><strong>@Model.Genre.Name</strong></div>
+    <form method="post">
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>

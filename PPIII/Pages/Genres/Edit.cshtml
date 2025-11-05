@@ -1,0 +1,15 @@
+@page "{id:int}"
+@model PPIII.Pages.Genres.EditModel
+
+<h1>Editar Género</h1>
+
+<form method="post">
+    <input type="hidden" asp-for="Genre.Id" />
+    <div class="form-group">
+        <label asp-for="Genre.Name"></label>
+        <input asp-for="Genre.Name" class="form-control" />
+        <span asp-validation-for="Genre.Name" class="text-danger"></span>
+    </div>
+    <button class="btn btn-primary" type="submit">Guardar</button>
+    <a asp-page="./Index" class="btn btn-secondary">Cancelar</a>
+</form>

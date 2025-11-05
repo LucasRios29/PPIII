@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PPIII")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+18c82bdda3008e2c448c5101d6e46336baa070db")]
 [assembly: System.Reflection.AssemblyProductAttribute("PPIII")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PPIII")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

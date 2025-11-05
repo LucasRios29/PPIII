@@ -23,6 +23,9 @@ namespace PPIII.Pages.Movies
         [BindProperty]
         public Movie Movie { get; set; } = default!;
 
+        public SelectList? Genres { get; set; }
+        public SelectList? Ratings { get; set; }
+
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null)
@@ -36,7 +39,16 @@ namespace PPIII.Pages.Movies
                 return NotFound();
             }
             Movie = movie;
+            await PopulateSelectListsAsync();
             return Page();
+        }
+
+        private async Task PopulateSelectListsAsync()
+        {
+            var genres = await _context.Genre.OrderBy(g => g.Name).Select(g => g.Name).ToListAsync();
+            var ratings = await _context.Rating.OrderBy(r => r.Name).Select(r => r.Name).ToListAsync();
+            Genres = new SelectList(genres);
+            Ratings = new SelectList(ratings);
         }
 
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -45,6 +57,7 @@ namespace PPIII.Pages.Movies
         {
             if (!ModelState.IsValid)
             {
+                await PopulateSelectListsAsync();
                 return Page();
             }
 

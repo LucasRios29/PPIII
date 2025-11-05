@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace PPIII.Models
 {
-    public class Genre
+    public class Rating
     {
         public int Id { get; set; }
 
         [Required]
-        [StringLength(30)]
+        [StringLength(10)]
         public string Name { get; set; } = string.Empty;
 
         public List<Movie> Movies { get; set; } = new();

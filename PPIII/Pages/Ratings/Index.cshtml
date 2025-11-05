@@ -1,0 +1,24 @@
+@page
+@model PPIII.Pages.Ratings.IndexModel
+
+<h1>Clasificaciones (Ratings)</h1>
+
+<p><a asp-page="Create">Crear nueva clasificación</a></p>
+
+<table class="table">
+    <thead>
+        <tr><th>Id</th><th>Nombre</th><th></th></tr>
+    </thead>
+    <tbody>
+@foreach(var r in Model.RatingList) {
+    <tr>
+        <td>@r.Id</td>
+        <td>@r.Name</td>
+        <td>
+            <a asp-page="Edit" asp-route-id="@r.Id">Editar</a> |
+            <a asp-page="Delete" asp-route-id="@r.Id">Eliminar</a>
+        </td>
+    </tr>
+}
+    </tbody>
+</table>

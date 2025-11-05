@@ -25,8 +25,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Movie.Genre" class="control-label"></label>
-                <input asp-for="Movie.Genre" class="form-control" />
+                <select asp-for="Movie.Genre" asp-items="Model.Genres" class="form-control">
+                    <option value="">-- Seleccione género --</option>
+                </select>
                 <span asp-validation-for="Movie.Genre" class="text-danger"></span>
+                <p><a asp-page="/Genres/Create">Crear nuevo género</a></p>
             </div>
             <div class="form-group">
                 <label asp-for="Movie.Price" class="control-label"></label>
@@ -35,8 +38,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="Movie.Rating" class="control-label"></label>
-                <input asp-for="Movie.Rating" class="form-control" />
+                <select asp-for="Movie.Rating" asp-items="Model.Ratings" class="form-control">
+                    <option value="">-- Seleccione clasificación --</option>
+                </select>
                 <span asp-validation-for="Movie.Rating" class="text-danger"></span>
+                <p><a asp-page="/Ratings/Create">Crear nueva clasificación</a></p>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

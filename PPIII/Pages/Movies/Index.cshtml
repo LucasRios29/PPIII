@@ -16,10 +16,15 @@
         <select asp-for="MovieGenre" asp-items="Model.Genres">
             <option value="">All</option>
         </select>
+        <select asp-for="MovieRating" asp-items="Model.Ratings">
+            <option value="">All</option>
+        </select>
         title: <input type="text" asp-for="SearchString" />
         <input type="submit" value="Filter" />
     </p>
 </form>
+
+<p><a asp-page="/Ratings/Index">Administrar clasificaciones (Ratings)</a></p>
 
 <table class="table">
     <thead>

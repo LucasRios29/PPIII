@@ -16,5 +16,6 @@ namespace PPIII.Data
 
         public DbSet<PPIII.Models.Movie> Movie { get; set; } = default!;
         public DbSet<PPIII.Models.Genre> Genre { get; set; } = default!;
+        public DbSet<PPIII.Models.Rating> Rating { get; set; } = default!;
     }
 }

@@ -23,19 +23,20 @@ namespace PPIII.Pages.Movies
         public IList<Movie> Movie { get;set; } = default!;
 
         [BindProperty(SupportsGet = true)]  
-
         public string? SearchString { get; set; }
 
         public SelectList? Genres { get; set; }
         [BindProperty(SupportsGet = true)]  
-
         public string? MovieGenre { get; set; }
 
-
+        public SelectList? Ratings { get; set; }
+        [BindProperty(SupportsGet = true)]
+        public string? MovieRating { get; set; }
 
         public async Task OnGetAsync()
         {
             IQueryable<string> genreQuery = from m in _context.Movie orderby m.Genre select m.Genre!;
+            IQueryable<string> ratingQuery = from m in _context.Movie orderby m.Rating select m.Rating!;
 
             var movies = from m in _context.Movie select m;
             if (!string.IsNullOrEmpty(SearchString))
@@ -46,7 +47,13 @@ namespace PPIII.Pages.Movies
             {
                 movies = movies.Where(s => s.Genre == MovieGenre);
             }
+            if (!string.IsNullOrEmpty(MovieRating))
+            {
+                movies = movies.Where(s => s.Rating == MovieRating);
+            }
+
             Genres = new SelectList(await genreQuery.Distinct().ToListAsync());
+            Ratings = new SelectList(await ratingQuery.Distinct().ToListAsync());
             Movie = await movies.ToListAsync();
         }
     }

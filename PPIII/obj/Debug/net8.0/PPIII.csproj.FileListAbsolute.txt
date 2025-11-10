@@ -523,3 +523,4 @@ C:\tplucas\PPIII\PPIII\obj\Debug\net8.0\refint\PPIII.dll
 C:\tplucas\PPIII\PPIII\obj\Debug\net8.0\PPIII.pdb
 C:\tplucas\PPIII\PPIII\obj\Debug\net8.0\PPIII.genruntimeconfig.cache
 C:\tplucas\PPIII\PPIII\obj\Debug\net8.0\ref\PPIII.dll
+C:\Users\Dokgo\source\repos\PPIII\PPIII\obj\Debug\net8.0\PPIII.sourcelink.json

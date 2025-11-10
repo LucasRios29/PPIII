@@ -1,8 +1,8 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;                // <-- A�adido
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,14 +11,11 @@ using PPIII.Models;
 
 namespace PPIII.Pages.Movies
 {
-    public class IndexModel : PageModel
+    public class ManageModel : PageModel
     {
-        private readonly PPIII.Data.PPIIIContext _context;
+        private readonly PPIIIContext _context;
 
-        public IndexModel(PPIII.Data.PPIIIContext context)
-        {
-            _context = context;
-        }
+        public ManageModel(PPIIIContext context) => _context = context;
 
         public IList<Movie> Movie { get; set; } = default!;
 
@@ -35,7 +32,6 @@ namespace PPIII.Pages.Movies
 
         public async Task OnGetAsync()
         {
-            // Cargar listas desde las tablas externas Genre y Rating (sincronizadas aunque no tengan películas)
             var genreNames = await _context.Genre
                                            .OrderBy(g => g.Name)
                                            .Select(g => g.Name)
@@ -46,7 +42,6 @@ namespace PPIII.Pages.Movies
                                             .Select(r => r.Name)
                                             .ToListAsync();
 
-            // Query base de películas y filtros
             var movies = from m in _context.Movie select m;
             if (!string.IsNullOrEmpty(SearchString))
             {

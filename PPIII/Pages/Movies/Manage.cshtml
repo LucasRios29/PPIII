@@ -1,0 +1,61 @@
+@page
+@model PPIII.Pages.Movies.ManageModel
+
+@{
+    ViewData["Title"] = "Administrar películas";
+}
+
+<h1>Administrar películas</h1>
+
+<p><a asp-page="./Index" class="btn btn-sm btn-outline-secondary">Volver a Movies</a></p>
+
+<form method="get">
+    <p>
+        <label for="MovieGenre" class="me-2">Género:</label>
+        <select asp-for="MovieGenre" asp-items="Model.Genres" id="MovieGenre" class="me-3">
+            <option value="">Todos</option>
+        </select>
+
+        <label for="MovieRating" class="me-2">Clasificación (Rating):</label>
+        <select asp-for="MovieRating" asp-items="Model.Ratings" id="MovieRating" class="me-3">
+            <option value="">Todos</option>
+        </select>
+
+        <label for="SearchString" class="me-2">Título:</label>
+        <input type="text" asp-for="SearchString" id="SearchString" class="me-2" />
+        <input type="submit" value="Filtrar" class="btn btn-sm btn-primary" />
+    </p>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Título</th>
+            <th>Fecha de estreno</th>
+            <th>Género</th>
+            <th>Precio</th>
+            <th>Clasificación</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Movie) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Title)</td>
+            <td>@Html.DisplayFor(modelItem => item.ReleaseDate)</td>
+            <td>@Html.DisplayFor(modelItem => item.Genre)</td>
+            <td>@Html.DisplayFor(modelItem => item.Price)</td>
+            <td>@Html.DisplayFor(modelItem => item.Rating)</td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.Id" class="btn btn-sm btn-primary">Editar</a>
+                <a asp-page="./Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detalles</a>
+                <a asp-page="./Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Eliminar</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
